@@ -5,12 +5,15 @@ let config = {
   limitKeys: false,
   dismissChallengePopup: true,
   autoSearch: true,
+  setWidth: true,
+  slider: 150,
 };
 function useOptions() {
   chrome.storage.sync.get(
-    { limitKeys: false, dismissChallengePopup: true, autoSearch: true },
+    { limitKeys: false, dismissChallengePopup: true, autoSearch: true, setWidth: true, slider: 150 },
     (items) => {
       config = items;
+      console.log(config);
     }
   );
 }
@@ -59,11 +62,14 @@ function isOnIXLPage() {
 
 // Function to adjust the width of input fields on IXL pages
 function adjustInputFields() {
+
   if (isOnIXLPage()) {
     document
       .querySelectorAll("input[type='text'], input.fillIn")
       .forEach(function (target) {
-        target.style.width = "150px"; // Adjust the width as needed
+        target.style.width = `${config.slider}px`; // Adjust the width as needed
+        target.style.maxWidth = `${config.slider}px`; // Adjust the width as needed
+        target.style.minWidth = `${config.slider}px`; // Adjust the width as needed
       });
   }
 }
@@ -71,11 +77,17 @@ function adjustInputFields() {
 // Event listener for keydown events on input fields
 document.addEventListener("keydown", function (event) {
   const target = event.target;
+  
   if (
     target.tagName.toLowerCase() === "input" &&
     (target.type === "text" || target.classList.contains("fillIn")) &&
     isOnIXLPage()
   ) {
+    if (config.setWidth) {
+      target.style.width = `${config.slider}px`; // Adjust the width as needed
+      target.style.maxWidth = `${config.slider}px`; // Adjust the width as needed
+      target.style.minWidth = `${config.slider}px`; // Adjust the width as needed
+    }
     if (isAllowedKey(event)) {
       return;
     }
@@ -84,14 +96,16 @@ document.addEventListener("keydown", function (event) {
         event.preventDefault();
       }
     }
-    target.style.width = "150px"; // Adjust the width as needed
+
   }
 });
 
 console.log(isOnIXLPage());
 if (isOnIXLPage()) {
   // Adjust input fields every second
-  setInterval(adjustInputFields, 1000);
+  if (config.setWidth) {
+    setInterval(adjustInputFields, 1000);
+  }
   if (config.dismissChallengePopup) {
     setInterval(function () {
       if (

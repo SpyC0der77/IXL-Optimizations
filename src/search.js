@@ -1,5 +1,4 @@
 // Function to simulate clicking on a search result with the specified skill ID
-console.log("Search page loaded");
 function clickOnSkillId() {
   const result = document.querySelector(".code-match");
   if (result) {
@@ -12,15 +11,10 @@ function useOptions() {
   chrome.storage.sync.get(
     { limitKeys: false, dismissChallengePopup: true, autoSearch: true },
     (items) => {
-      // Use the retrieved options
-      console.log("Options retrieved:", items);
 
       // Example usage: Check if autoSearch is enabled
       if (items.autoSearch) {
         clickOnSkillId();
-        console.log("Auto search is enabled");
-      } else {
-        console.log("Auto search is disabled");
       }
 
       // Add more logic based on other options as needed

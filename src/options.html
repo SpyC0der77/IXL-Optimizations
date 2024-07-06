@@ -1,18 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Test Extension Options</title>
-  </head>
-  <body>
-    <input type="checkbox" id="limitKeys"><label for="limitKeys">Limit keys</label><br>
-    <input type="checkbox" id="dismissChallengePopup"><label for="dismissChallengePopup">Dismiss challenge popup</label><br>
-    <input type="checkbox" id="autoSearch"><label for="autoSearch">Auto skill redirect on search</label><br>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IXL Optimizations Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>IXL Optimizations Options</h1>
+    
+    <div class="option">
+      <input type="checkbox" id="limitKeys">
+      <label for="limitKeys">Limit keys</label>
+    </div>
 
-    <br>
+    <div class="option">
+      <input type="checkbox" id="dismissChallengePopup">
+      <label for="dismissChallengePopup">Dismiss challenge popup</label>
+    </div>
 
-    <div id="status"></div>
-    <button id="save">Save</button>
+    <div class="option">
+      <input type="checkbox" id="autoSearch">
+      <label for="autoSearch">Auto skill redirect on search</label>
+    </div>
+    <div class="option">
+        <input type="checkbox" id="setWidth">
+        <label for="setWidth">Set width of input</label>
+    </div>
+    <div class="option" id="slider-container">
+      <label for="slider">Width of input</label>
+      <input type="range" id="slider" name="slider" min="100" max="250" step="10">
+    </div>
 
-    <script src="options.js"></script>
-  </body>
+    <div id="status" class="status"></div>
+    <button id="save" class="save-btn">Save</button>
+    <button id="revert" class="save-btn">Revert</button>
+  </div>
+  <script src="options.js"></script>
+</body>
 </html>
