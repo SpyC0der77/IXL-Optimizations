@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "IXL Optimizations",
+  "version": "1.0",
+  "description": "Optimizes the user experience on IXL math and quiz/test pages.",
+  "permissions": ["activeTab", "storage","tabs"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.ixl.com/*"],
+      "js": ["src/content.js"]
+    },
+    {
+      "matches": ["https://www.ixl.com/search?q=*"],
+      "js": ["src/search.js"]
+    }
+  ],
+  "icons": {
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "128": "icon128.png"
+    }
+  },
+  "options_ui": {
+    "page": "src/options.html",
+    "open_in_tab": false
+  },
+  "omnibox": {
+    "keyword": "skill",
+    "suggestion_url": "https://www.ixl.com/search?q={searchTerms}",
+    "default_suggestion": "Navigate to IXL skill by ID"
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  }
+}
