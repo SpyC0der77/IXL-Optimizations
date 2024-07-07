@@ -10,11 +10,11 @@ Auto search redirect allows students to easily go to a skill by id, just by typi
 
 ##### Chrome search bar for IXL skill search
 
-This feature allows you to quickly search for IXL skills directly in the chrome search bar. Just type in "skill", press TAB on your keyboard, and then type in what you want to search. When you press enter, it will take you to the ixl search page. This also works with "Auto Search Redirect", so you can type in a skill's id and search and it will take you to the skill. 
+This feature allows you to quickly search for IXL skills directly in the chrome search bar. Just type in "skill", press TAB on your keyboard, and then type in what you want to search. When you press enter, it will take you to the ixl search page. This also works with "Auto Search Redirect", so you can type in a skill's id and search and it will take you to the skill.
 
 ##### Set input width
 
-Set input width is just like it sounds. It sets the width of inputs, so that you have more space to type in. You can customize the width you want it to set to in the config.
+Set input width is just like it sounds. It sets the width of inputs, so that you have more space to type in. You can customize the width you want it to set to in the [config](https://github.com/SpyC0der77/IXL-Optimizations?tab=readme-ov-file#easy-configuration).
 
 ##### Challenge Zone Popup Skipping
 
@@ -27,3 +27,8 @@ Key limiting is a feature that only allows certain keys to be pressed when doing
 ##### Easy Configuration
 
 Easy configuration is a must for all chrome extensions. With IXL Optimizations Easy Configuration ("config") you can easily change what you want this extension to do. All of the features listed above are able to be turned off. To open the config, just click on the extensions button in the top right of your chrome browser, and then click on the IXL Optimizations button. This will popup the config. For easy access, click the pin button (Thumbtack) next to the extension name.
+
+
+### Source Code:
+
+[Here](https://https://github.com/SpyC0der77/IXL-Optimizations) is the link to the source code.
