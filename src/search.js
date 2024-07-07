@@ -9,7 +9,7 @@ function clickOnSkillId() {
 // Function to retrieve options from chrome.storage and use them
 function useOptions() {
   chrome.storage.sync.get(
-    { limitKeys: false, dismissChallengePopup: true, autoSearch: true },
+    { autoSearch: true },
     (items) => {
 
       // Example usage: Check if autoSearch is enabled
