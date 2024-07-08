@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "IXL Optimizations",
-  "version": "1.0",
+  "version": "1.2.3",
   "description": "Optimizes the user experience on IXL math and quiz/test pages.",
   "permissions": ["activeTab", "storage","tabs"],
   "content_scripts": [
@@ -12,6 +12,14 @@
     {
       "matches": ["https://www.ixl.com/search?q=*"],
       "js": ["src/search.js"]
+    },
+    {
+      "matches": ["https://www.ixl.com/diagnostic/arena"],
+      "js": ["src/diagnostic.js"]
+    },
+    {
+      "matches": ["https://www.ixl.com/awards/math/*"],
+      "js": ["src/awards.js"]
     }
   ],
   "icons": {
