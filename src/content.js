@@ -7,15 +7,23 @@ let config = {
   autoSearch: true,
   setWidth: true,
   slider: 150,
+  autoCloseIncompleteModal: true,
 };
 function useOptions() {
   chrome.storage.sync.get(
-    { limitKeys: false, dismissChallengePopup: true, autoSearch: true, setWidth: true, slider: 150 },
+    {
+      limitKeys: false,
+      dismissChallengePopup: true,
+      autoSearch: true,
+      setWidth: true,
+      slider: 150,
+      autoCloseIncompleteModal: true,
+    },
     (items) => {
       config = items;
-      console.log(config);
     }
   );
+  console.log(config);
 }
 
 // Call useOptions when content.js is loaded
@@ -62,7 +70,6 @@ function isOnIXLPage() {
 
 // Function to adjust the width of input fields on IXL pages
 function adjustInputFields() {
-
   if (isOnIXLPage()) {
     document
       .querySelectorAll("input[type='text'], input.fillIn")
@@ -77,7 +84,7 @@ function adjustInputFields() {
 // Event listener for keydown events on input fields
 document.addEventListener("keydown", function (event) {
   const target = event.target;
-  
+
   if (
     target.tagName.toLowerCase() === "input" &&
     (target.type === "text" || target.classList.contains("fillIn")) &&
@@ -96,12 +103,12 @@ document.addEventListener("keydown", function (event) {
         event.preventDefault();
       }
     }
-
   }
 });
 
 console.log(isOnIXLPage());
 if (isOnIXLPage()) {
+  useOptions();
   // Adjust input fields every second
   if (config.setWidth) {
     setInterval(adjustInputFields, 1000);
@@ -115,6 +122,19 @@ if (isOnIXLPage()) {
       ) {
       } else {
         document.querySelector(".close-countdown-button").click();
+      }
+    }, 100);
+  }
+  if (config.autoCloseIncompleteModal) {
+    setInterval(() => {
+      let modal = document.getElementById("incomplete-answer-popover-hd");
+      if (modal) {
+        modal = modal.parentElement;
+        modal = modal.parentElement;
+        modal = modal.parentElement;
+        if (modal.parentElement.getAttribute("data-state") == "open") {
+          document.querySelector(".modal-close").click();
+        }
       }
     }, 100);
   }

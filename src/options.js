@@ -7,6 +7,8 @@ const saveOptions = () => {
   const autoSearch = document.getElementById("autoSearch").checked;
   const setWidth = document.getElementById("setWidth").checked;
   const slider = document.getElementById("slider").value;
+  const autoCloseIncompleteModal = document.getElementById("autoCloseIncompleteModal").checked;
+
   chrome.storage.sync.set(
     {
       limitKeys: limitKeys,
@@ -14,6 +16,7 @@ const saveOptions = () => {
       autoSearch: autoSearch,
       setWidth: setWidth,
       slider: slider,
+      autoCloseIncompleteModal: autoCloseIncompleteModal,
     },
     () => {
       // Update status to let user know options were saved.
@@ -36,6 +39,7 @@ const revertOptions = () => {
         autoSearch: true,
         setWidth: true,
         slider: 150,
+        autoCloseIncompleteModal: true,
       },
       () => {
         // Update status to let user know options were saved.
@@ -53,7 +57,7 @@ const revertOptions = () => {
 // stored in chrome.storage.
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { limitKeys: false, dismissChallengePopup: true, autoSearch: true, setWidth: true, slider: 150 },
+    { limitKeys: false, dismissChallengePopup: true, autoSearch: true, setWidth: true, slider: 150, autoCloseIncompleteModal: true },
     (items) => {
       document.getElementById("limitKeys").checked = items.limitKeys;
       document.getElementById("dismissChallengePopup").checked =
@@ -61,9 +65,11 @@ const restoreOptions = () => {
       document.getElementById("autoSearch").checked = items.autoSearch;
       document.getElementById("setWidth").checked = items.setWidth;
       document.getElementById("slider").value = items.slider;
+      document.getElementById("autoCloseIncompleteModal").checked = items.autoCloseIncompleteModal;
     }
   );
 };
+
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.getElementById("save").addEventListener("click", saveOptions);
