@@ -16,8 +16,6 @@ function useOptions() {
       if (items.autoSearch) {
         clickOnSkillId();
       }
-
-      // Add more logic based on other options as needed
     }
   );
 }
