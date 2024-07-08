@@ -28,9 +28,7 @@
     "open_in_tab": true
   },
   "omnibox": {
-    "keyword": "skill",
-    "suggestion_url": "https://www.ixl.com/search?q={searchTerms}",
-    "default_suggestion": "Navigate to IXL skill by ID"
+    "keyword": "skill"
   },
   "background": {
     "service_worker": "src/background.js"
