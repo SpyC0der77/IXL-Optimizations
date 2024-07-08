@@ -24,6 +24,9 @@ Challenge Zone Popup Skipping automatically clicks the close button on the popup
 
 Key limiting is a feature that only allows certain keys to be pressed when doing an IXL skill. Not recommended for use in algebra, since it blocks characters, meaning that variables will not be able to be typed.
 
+##### Incomplete answer popup closing
+Incomplete answer popup closing is a QOL feature that automatically closes the incomplete answer popup. This saves you time, because if you accidentally press enter, then you won't have to click the close button, because it does it for you.
+
 ##### Easy Configuration
 
 Easy configuration is a must for all chrome extensions. With IXL Optimizations Easy Configuration ("config") you can easily change what you want this extension to do. All of the features listed above are able to be turned off. To open the config, just click on the extensions button in the top right of your chrome browser, and then click on the IXL Optimizations button. This will popup the config. For easy access, click the pin button (Thumbtack) next to the extension name.
