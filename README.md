@@ -1,37 +1,35 @@
 # IXL Optimizations
 
-Welcome to the IXL Optimizations README.md. Here I will talk about all of the things you need to know, and a link to the source code if you want to make sure that this extension won't allow your students to cheat.
+A Manifest V3 Chrome extension that adjusts IXL search and answer-input behavior. Settings are available in the extension popup and options page.
 
-### Features:
+## Install locally
 
-##### Auto Search Redirect
+```bash
+git clone https://github.com/SpyC0der77/IXL-Optimizations.git
+```
 
-Auto search redirect allows students to easily go to a skill by id, just by typing in the IXL search bar the skill ID and pressing enter.
+Open `chrome://extensions`, enable **Developer mode**, choose **Load unpacked**, and select the cloned folder containing `manifest.json`. No build step or package installation is required.
 
-##### Chrome search bar for IXL skill search
+## Settings
 
-This feature allows you to quickly search for IXL skills directly in the chrome search bar. Just type in "skill", press TAB on your keyboard, and then type in what you want to search. When you press enter, it will take you to the ixl search page. This also works with "Auto Search Redirect", so you can type in a skill's id and search and it will take you to the skill.
+- Redirect skill-code searches to the matching skill.
+- Search through Chrome's address bar by typing `skill`, pressing Tab, and entering a query.
+- Set answer-input widths between 100 and 250 pixels.
+- Dismiss the Challenge Zone and incomplete-answer popups automatically.
+- Optionally restrict accepted keys. Leave this off when answers require algebraic variables or other blocked characters.
 
-##### Set input width
+Open the extension popup, change the settings, and click **Save**. **Revert** restores the default options. Settings use `chrome.storage.sync`.
 
-Set input width is just like it sounds. It sets the width of inputs, so that you have more space to type in. You can customize the width you want it to set to in the [config](https://github.com/SpyC0der77/IXL-Optimizations?tab=readme-ov-file#easy-configuration).
+The options page also contains a **Claim All Rewards** button, but the current options script does not attach a handler to it.
 
-##### Challenge Zone Popup Skipping
+## Source and permissions
 
-Challenge Zone Popup Skipping automatically clicks the close button on the popup saying "Are you ready for the challenge zone?" so that you can keep mathing without any interuptions.
+[`manifest.json`](manifest.json) declares `activeTab`, `storage`, and `tabs` permissions. Content scripts run on matching `https://www.ixl.com/` pages:
 
-##### Key limiting
+- [`src/content.js`](src/content.js): answer-input and popup adjustments.
+- [`src/search.js`](src/search.js): search redirects.
+- [`src/background.js`](src/background.js): address-bar keyword handling.
+- [`src/diagnostic.js`](src/diagnostic.js) and [`src/awards.js`](src/awards.js): page-specific behavior.
+- [`src/options.html`](src/options.html) and [`src/options.js`](src/options.js): configuration UI and persistence.
 
-Key limiting is a feature that only allows certain keys to be pressed when doing an IXL skill. Not recommended for use in algebra, since it blocks characters, meaning that variables will not be able to be typed.
-
-##### Incomplete answer popup closing
-Incomplete answer popup closing is a QOL feature that automatically closes the incomplete answer popup. This saves you time, because if you accidentally press enter, then you won't have to click the close button, because it does it for you.
-
-##### Easy Configuration
-
-Easy configuration is a must for all chrome extensions. With IXL Optimizations Easy Configuration ("config") you can easily change what you want this extension to do. All of the features listed above are able to be turned off. To open the config, just click on the extensions button in the top right of your chrome browser, and then click on the IXL Optimizations button. This will popup the config. For easy access, click the pin button (Thumbtack) next to the extension name.
-
-
-### Source Code:
-
-[Here](https://https://github.com/SpyC0der77/IXL-Optimizations) is the link to the source code.
+This is an unofficial extension. IXL page changes can break selectors or redirects, and the skill list bundled in the background script can become outdated.
